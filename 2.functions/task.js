@@ -1,6 +1,6 @@
 // Task 1
  
-  function getArrayParams(arr) {
+  function getArrayParams(...arr) {
     let min = Infinity, 
       max = -Infinity, 
       sum = 0;
@@ -12,17 +12,15 @@
      max = arr[i];   } 
       sum += arr[i];
     }
-    let avg = Number((sum / arr.length).toFixed(2));  
-    let arrMas = {
-      min: min,
-      max: max,
-      avg: avg    
-    };  
-    return arrMas;
+    let avg = sum / arr.length;
+    avg = +(avg.toFixed(2));
+
+    return { min: min, max: max, avg: avg };
   };
 
-const mas = [1, 2, 3, -100, 10];
-console.log(getArrayParams(mas));
+console.log(getArrayParams(1, 2, 3, -100, 10));
+console.log(getArrayParams(-99, 99, 10));
+console.log(getArrayParams(5));
 console.log( );
 
 
