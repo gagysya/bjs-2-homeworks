@@ -1,4 +1,4 @@
-// Задача 1.
+// Task 1
  
   function getArrayParams(arr) {
     let min = Infinity, 
@@ -26,7 +26,7 @@ console.log(getArrayParams(mas));
 console.log( );
 
 
-// Задача 2.
+// Task 2
 
 function summElementsWorker(...arr) {
   if (arr.length === 0) {
@@ -85,7 +85,7 @@ function averageEvenElementsWorker(...arr) {
 console.log(averageEvenElementsWorker(1, 2, 3, 4, 5, 6, 7, 8, 9));
 console.log( );
 
-// Задача 3.
+// Task 3
 
 function makeWork (arrOfArr, func) {
   let maxWorkerResult = -Infinity;
