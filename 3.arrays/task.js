@@ -1,32 +1,19 @@
 // Task 1
 
 function compareArrays(arr1, arr2) {
-  if (arr1.length != arr2.length) {
-    return false
-  }
-  return arr1.every((item, index) => {
-    if (arr2[index]) {
-      return arr2[index] == item;
-    } else {
-      return false;
-    }
-  })
+  return ((arr1.length === arr2.length) && arr1.every((element, index) => element === arr2[index]));
 }
-console.log (compareArrays([9, 2, 4, 8, 2], [9, 2, 4]))
-console.log (compareArrays([8, 1, 2], [8, 1, 2]))
-console.log ( )
+console.log(compareArrays([9, 2, 4, 8, 2], [9, 2, 4]))
+console.log(compareArrays([8, 1, 2], [8, 1, 2]))
+console.log(compareArrays([8, 9], [6]))
+console.log(compareArrays([8, 9, 5, 4], [8, 9, 5, 4, 8, 3, 5]))
+console.log(compareArrays([1, 2, 3], [2, 3, 1]))
 
 // Task 2
 
 function getUsersNamesInAgeRange(users, gender) {
-  if (users.length === 0 || (gender != "мужской" && gender != "женский")) {
-    return 0
-  }
-  
-  let result = users.filter(user => user.gender === gender).map(user => user = user.age); 
-  let sum = result.reduce((a,b) => a+b);
-  return sum / result.length  
-}
+    return users.filter(user => user.gender === gender).map(ages => ages.age).reduce((averageAge, item, index, array) => {return averageAge += item/array.length}, 0);
+    }
 const people = [
   {firstName: "Александр", secondName: "Карпов", age: 17, gender: "мужской"},
   {firstName: "Егор", secondName: "Морозов", age: 21, gender: "мужской"},
