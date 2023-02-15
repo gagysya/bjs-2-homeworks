@@ -1,64 +1,43 @@
-function Student(name, gender, age) {
+function Student (name, gender, age, marks = []) {
     this.name = name;
     this.gender = gender;
     this.age = age;
+    this.marks = marks;
 }
+
+const student1 = new Student("Polina", "female", 20);
+const student2 = new Student("Leo", "male", 21);
 
 Student.prototype.setSubject = function (subjectName) {
     this.subject = subjectName;
 }
 
-Student.prototype.addMark = function (mark) {
+Student.prototype.addMark = function(marks) {
     if(this.marks === undefined){
-        this.marks = [mark];
+        this.marks = [...marks];   
     } else {
-        this.marks.push(mark);
+        this.marks.push(marks);
     }
 }
 
-Student.prototype.addMarks = function (...marks) {
-    if (this.marks === undefined) {
-        this.marks = [];
-    }
-    
-    for (let mark of marks) {
-        this.marks.push(mark);
+Student.prototype.addMarks = function(...marks){
+    if(this.marks === undefined){
+        this.marks = undefined;   
+    } else {
+        this.marks = this.marks.concat(marks);
     }
 }
 
-Student.prototype.getAverage = function () {
-    return this.marks.reduce((a, b) => a + b) / this.marks.length;
+Student.prototype.getAverage = function(){
+    if(this.marks === undefined){
+        return 0;
+    } else {
+      return this.marks.reduce( ( a, v ) => a + v/this.marks.length , 0) 
+    }
 }
 
-Student.prototype.exclude = function (reason) {
-    delete(this.marks);
-    delete(this.subject);
-
-    this.excluded = reason;
+ Student.prototype.exclude = function(reason){
+    delete this.subject;
+    delete this.marks;
+    this.excluded  = reason; 
 }
-
-
-let studentOne = new Student("Лев", "мужской", 21);
-studentOne.setSubject("Biology");
-studentOne.addMark(3);
-studentOne.addMark(5);
-studentOne.addMark(5);
-console.log(studentOne.getAverage());
-console.log(studentOne);
-
-let studentTwo = new Student("Полина", "женский", 20);
-studentTwo.setSubject("Chemistry");
-studentTwo.addMark(3);
-studentTwo.addMark(2);
-studentTwo.addMark(2);
-console.log(studentTwo.getAverage());
-studentTwo.exclude('Bad study')
-console.log(studentTwo)
-
-let studentThree = new Student("Максим", "мужской", 22);
-studentThree.setSubject("Chemistry");
-studentThree.addMark(5);
-studentThree.addMark(4);
-studentThree.addMark(5);
-console.log(studentThree.getAverage());
-console.log(studentThree);
