@@ -6,10 +6,10 @@ class AlarmClock {
 
   addClock(time, callback) {
     if (!time || callback === undefined) {
-      throw new Error('Отсутствуют обязательные аргументы');
+      throw new Error('СњС‚СЃСѓС‚СЃС‚РІСѓСЋС‚ РѕР±В¤Р·Р°С‚РµР»СЊРЅС‹Рµ Р°СЂРіСѓРјРµРЅС‚С‹');
     }
     if (this.alarmCollection.some((alarm) => alarm.time === time)) {
-      console.warn('Уже присутствует звонок на это же время');
+      console.warn('вЂќР¶Рµ РїСЂРёСЃСѓС‚СЃС‚РІСѓРµС‚ Р·РІРѕРЅРѕРє РЅР° СЌС‚Рѕ Р¶Рµ РІСЂРµРјВ¤');
     }
     this.alarmCollection.push({ time, callback, canCall: true });
   }
